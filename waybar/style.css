@@ -1,0 +1,49 @@
+* {
+    border-radius: 5;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 2px;
+    margin: 0px 6px;
+}
+
+window#waybar {
+    background: rgba(0, 0, 0, 0);
+    padding: 0;
+    margin: 0;
+}
+
+#clock,
+#cpu,
+#memory,
+#battery,
+#network,
+#pulseaudio {
+    background-color: #000000;
+    color: #aaaaaa;
+}
+
+#workspaces button {
+    background-color: #000000;
+    min-width: 6px;
+    box-shadow: inset 0 -3px transparent;
+    color: #aaaaaa;
+}
+
+#clock {
+    background-color: #000000;
+    color: #aaaaaa;
+}
+
+#tray {
+    background-color: #000000;
+    min-width: 6px;
+}
+
+#cpu.critical,
+#memory.critical,
+#battery.warning,
+#battery.critical,
+#battery.urgent {
+    background-color: #ffffff;
+    color: #000000;
+}

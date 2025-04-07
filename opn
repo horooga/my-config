@@ -1,0 +1,14 @@
+path=""
+
+if [[ -z $1 ]]; then
+    path=$(fzf --preview="bat {} --color=always")
+    if [[ $path ]]; then
+        nvim $path
+    fi
+else
+    case $1 in
+    main)
+        nvim $PWD/src/main.*
+        ;;
+    esac
+fi

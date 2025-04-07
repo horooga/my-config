@@ -1,0 +1,31 @@
+lpy_path=${PWD}/.venv/bin/python3.13;
+lpip_path=${PWD}/.venv/bin/pip3.13;
+fastapi_path=${PWD}/.venv/bin/fastapi;
+
+if [[ -z $1 ]]; then
+    echo "Usage: lpy [command] [arg]"
+    echo "Commands:"
+    echo "    install [arg] - pip install [arg]"
+    echo "    uninstall [arg] - pip uninstall [arg]"
+    echo "    pipupgrade - pip install --upgrade pip"
+    echo "    main - python main.py"
+    echo "    dev - fastapi dev"
+fi
+
+case "$1" in
+install)
+    $lpip_path install $2
+    ;;
+uninstall)
+    $lpip_path uninstall $2
+    ;;
+pipupgrade)
+    $lpip_path install --upgrade pip
+    ;;
+main)
+    $lpy_path main.py
+    ;;
+dev)
+    $fastapi_path dev
+    ;;
+esac

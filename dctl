@@ -1,0 +1,33 @@
+if [ -z "$1" ]; then
+    echo Usage: dctl [COMMAND]
+    echo ""
+    echo Commands:
+    echo "    db - build from dockerfile"
+    echo "    b - build from docker compose"
+    echo "    u - compose up"
+    echo "    d - compose down"
+    echo "    rr - rerun (down build up)"
+    echo "    z - delete all containers"
+fi
+
+case "$1" in
+    db)
+        docker build -t horooga/${PWD##*/} .
+        ;;
+    b)
+        docker compose build
+        ;;
+    u)
+        docker compose up -d
+        ;;
+    d)
+        docker compose down
+        ;;
+    rr)
+        docker compose down; docker compose build; docker compose up -d
+        ;;
+    z)
+        docker stop $(docker ps -q); docker rm $(docker ps -a -q)
+        ;;
+        
+esac
