@@ -1,7 +1,5 @@
 sudo pacman -Suy
-sudo pacman -S brightnessctl git waybar nvim zsh flatpak firefox fzf bat
-
-chsh -s /usr/bin/zsh
+sudo pacman -S brightnessctl git waybar nvim zsh firefox fzf bat fastfetch
 
 for i in hypr kitty nvim waybar; do
     sudo rm -rf ~/.config/$i
@@ -12,6 +10,8 @@ for i in app dctl lpy opn; do
     sudo chmod 0777 $i
     sudo mv $i /usr/bin/
 done
+
+chsh -s /usr/bin/zsh
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"

@@ -13,7 +13,6 @@
 
     "modules-right": [
         "tray",
-        "cpu_text",
         "cpu",
         "memory",
         "battery",
@@ -21,7 +20,7 @@
         "pulseaudio"
     ],
 
-    "sway/workspaces": {
+    "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "tooltip": false
@@ -34,16 +33,19 @@
 
     "clock": {
         "format": "{:%I:%M %p - %a, %d %b %Y}",
-        "tooltip": false
+        "tooltip": false,
+        "on-click": "kitty sh -c 'cal; read'"
     },
 
     "cpu": {
         "format": "cpu {usage}%",
         "interval": 2,
+        "tooltip": false,
 
         "states": {
             "critical": 90
-        }
+        },
+        "on-click": "kitty sh -c htop --sort-key=PERCENT_CPU"
     },
 
     "memory": {
@@ -52,7 +54,8 @@
 
         "states": {
             "critical": 80
-        }
+        },
+        "on-click": "kitty sh -c htop --sort-key=PERCENT_MEM"
     },
 
     "battery": {
