@@ -3,6 +3,7 @@ if [ -z "$1" ]; then
     echo ""
     echo Commands:
     echo "    db - build from dockerfile"
+    echo "    dr [image] - run container with exposed 8000 port"
     echo "    b - build from docker compose"
     echo "    u - compose up"
     echo "    d - compose down"
@@ -12,8 +13,11 @@ fi
 
 case "$1" in
     db)
-        docker build -t horooga/${PWD##*/} .
+        docker buildx build -t horooga/${PWD##*/} .
         ;;
+    dr)
+        docker run -d --name container -p 8000:8000 horooga/$2
+	    ;;
     b)
         docker compose build
         ;;

@@ -1,6 +1,6 @@
 lpy_path=${PWD}/.venv/bin/python3.13;
 lpip_path=${PWD}/.venv/bin/pip3.13;
-fastapi_path=${PWD}/.venv/bin/fastapi;
+uvicorn_path=${PWD}/.venv/bin/uvicorn
 
 if [[ -z $1 ]]; then
     echo "Usage: lpy [command] [arg]"
@@ -9,7 +9,7 @@ if [[ -z $1 ]]; then
     echo "    uninstall [arg] - pip uninstall [arg]"
     echo "    pipupgrade - pip install --upgrade pip"
     echo "    main - python main.py"
-    echo "    dev - fastapi dev"
+    echo "    dev - uvicorn run 0.0.0.0:8000"
 fi
 
 case "$1" in
@@ -26,6 +26,6 @@ main)
     $lpy_path main.py
     ;;
 dev)
-    $fastapi_path dev
+    $uvicorn_path main:app --host 0.0.0.0 --port 8000
     ;;
 esac
