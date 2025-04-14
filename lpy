@@ -5,27 +5,41 @@ uvicorn_path=${PWD}/.venv/bin/uvicorn
 if [[ -z $1 ]]; then
     echo "Usage: lpy [command] [arg]"
     echo "Commands:"
+    echo "    init - initialize venv and upgrade pip"
     echo "    install [arg] - pip install [arg]"
     echo "    uninstall [arg] - pip uninstall [arg]"
-    echo "    pipupgrade - pip install --upgrade pip"
     echo "    main - python main.py"
+    echo "    ex - python [file]"
     echo "    dev - uvicorn run 0.0.0.0:8000"
+    echo "    whatis [pip-package] - show pip-package dependencies"
 fi
 
 case "$1" in
+init)
+    python -m venv .venv;
+    .venv/bin/pip install --upgrade pip;
+    ;;
 install)
     $lpip_path install $2
     ;;
 uninstall)
     $lpip_path uninstall $2
     ;;
-pipupgrade)
-    $lpip_path install --upgrade pip
-    ;;
 main)
     $lpy_path main.py
     ;;
+ex)
+    $lpip_path $2
+    ;;
 dev)
     $uvicorn_path main:app --host 0.0.0.0 --port 8000
+    ;;
+whatis)
+    python -m venv tmp-venv
+    tmp-venv/bin/pip install --upgrade pip;
+    tmp-venv/bin/pip install $2;
+    echo "Dependencies:"
+    tmp-venv/bin/pip freeze;
+    rm -rf tmp-venv;
     ;;
 esac
