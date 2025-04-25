@@ -18,3 +18,9 @@ wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20B
 sudo mv MesloLGS\ NF\ Bold.ttf /usr/share/fonts
 
 chsh -s /usr/bin/zsh
+
+#Audio
+#sudo pacman -S pipewire pipewire-pulse pipewire-alsa wireplumber sof-firmware
+
+#Yay
+#sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd ../ && rm -rf yay

@@ -14,6 +14,7 @@
     "modules-right": [
         "tray",
         "cpu",
+        "temperature",
         "memory",
         "battery",
         "network",
@@ -34,7 +35,7 @@
     "clock": {
         "format": "{:%I:%M %p - %a, %d %b %Y}",
         "tooltip": false,
-        "on-click": "kitty sh -c 'cal; read'"
+        "on-click": "kitty sh -c 'cal --monday -3; read'"
     },
 
     "cpu": {
@@ -46,6 +47,17 @@
             "critical": 90
         },
         "on-click": "kitty sh -c htop --sort-key=PERCENT_CPU"
+    },
+
+    "temperature": {
+        "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
+        "input-filename": "temp2_input",
+        "format": "{temperatureC}°C",
+
+        "states": {
+            "critical": 80000
+        },
+        "tooltip": false
     },
 
     "memory": {

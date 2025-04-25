@@ -17,6 +17,7 @@ if [ -z "$1" ]; then
     echo "    ve - video edit"
     echo "    pm - postman"
     echo "    px - pixelorama"
+    echo "    ad - ascii draw"
 fi
 
 for i in "$@"; do
@@ -54,15 +55,18 @@ for i in "$@"; do
         ;;
     vb)
         VirtualBox &
-	;;
+	      ;;
     ve)
         flatpak run org.pitivi.Pitivi &
-	;;
+	      ;;
     pm)
         firefox --new-window https://www.postman.com
-	;;
+	      ;;
     px)
         flatpak run com.orama_interactive.Pixelorama &
-	;;
+	      ;;
+    ad)
+        flatpak run io.github.nokse22.asciidraw &
+        ;;
     esac
 done

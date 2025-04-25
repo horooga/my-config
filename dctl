@@ -3,12 +3,13 @@ if [ -z "$1" ]; then
     echo ""
     echo Commands:
     echo "    db - build from dockerfile"
-    echo "    dr [image] - run container with exposed 8000 port"
+    echo "    dr - run dockerfile container with exposed 8000 port"
+    echo "    drr - dockerfile rerun (z db dr)"
     echo "    b - build from docker compose"
     echo "    u - compose up"
     echo "    d - compose down"
-    echo "    rr - rerun (down build up)"
-    echo "    z - delete all containers"
+    echo "    rr - rerun (d b u)"
+    echo "    z - stop and delete all the containers"
 fi
 
 case "$1" in
@@ -16,8 +17,11 @@ case "$1" in
         docker buildx build -t horooga/${PWD##*/} .
         ;;
     dr)
-        docker run -d --name container -p 8000:8000 horooga/$2
-	    ;;
+        docker run -d --name container -p 8000:8000 horooga/${PWD##*/}}
+	      ;;
+    drr)
+        docker stop $(docker ps -q); docker rm $(docker ps -a -q); docker buildx build -t horooga/${PWD##*/} .; docker run -d --name container -p 8000:8000 horooga/${PWD##*/}
+        ;;
     b)
         docker compose build
         ;;
