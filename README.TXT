@@ -1,4 +1,7 @@
-execute "install.sh" file from git-cloned "my-config" dir
 !!!Script overwrites current ~/.config configs of hypr, kitty, nvim, waybar, fastfetch!!!
+SCRIPT INSTALLING:
+    1. uncomment needed optional lines in "install.sh"
+    2. execute "install.sh" from the current dir
 
-then change ZSH_THEME of ~/.zshrc config to "powerlevel10k/powerlevel10k", delete this folder and reboot
+AFTER-SCRIPT INSTALLING:
+    1. change ZSH_THEME of ~/.zshrc config to "powerlevel10k/powerlevel10k", delete this git-cloned repo and reboot

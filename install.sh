@@ -24,3 +24,6 @@ chsh -s /usr/bin/zsh
 
 #Yay
 #sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd ../ && rm -rf yay
+
+#rustup and rust-analyzer for nvim lsp
+#sudo pacman -S rustup cargo && rustup default stable && rustup component add rust-analyzer

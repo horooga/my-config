@@ -61,12 +61,18 @@ return {
 		opts = {
 			server = {
 				on_attach = function(_, bufnr)
-					vim.keymap.set("n", "<leader>cR", function()
+					vim.keymap.set("n", "<space>a", function()
 						vim.cmd.RustLsp("codeAction")
 					end, { desc = "Code Action", buffer = bufnr })
-					vim.keymap.set("n", "<leader>dr", function()
+					vim.keymap.set("n", "<space>a", function()
 						vim.cmd.RustLsp("debuggables")
 					end, { desc = "Rust Debuggables", buffer = bufnr })
+					vim.keymap.set("n", "<space>d", function()
+						vim.cmd.RustLsp("openDocs")
+					end, { desc = "Docs.rs open", buffer = bufnr })
+					vim.keymap.set("n", "<space>v", function()
+						vim.diagnostic.open_float()
+					end, { desc = "View lsp messages", buffer = bufnr })
 				end,
 				default_settings = {
 					-- rust-analyzer language server configuration
@@ -94,12 +100,8 @@ return {
 						},
 						files = {
 							excludeDirs = {
-								".direnv",
 								".git",
-								".github",
 								".gitlab",
-								"bin",
-								"node_modules",
 								"target",
 								"venv",
 								".venv",

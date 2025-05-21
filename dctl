@@ -2,25 +2,26 @@ if [ -z "$1" ]; then
     echo Usage: dctl [COMMAND]
     echo ""
     echo Commands:
-    echo "    db - build from dockerfile"
-    echo "    dr - run dockerfile container with exposed 8000 port"
-    echo "    drr - dockerfile rerun (z db dr)"
+    echo "    db [username] - build image from dockerfile with tag by current directory"
+    echo "    dr [username] - run container from image which taged by current directory with exposed 8000:8000 port"
+    echo "    drr [username] - dockerfile rerun (z db dr)"
     echo "    b - build from docker compose"
     echo "    u - compose up"
     echo "    d - compose down"
     echo "    rr - rerun (d b u)"
+    echo "    s - stop all the containers"
     echo "    z - stop and delete all the containers"
 fi
 
 case "$1" in
     db)
-        docker buildx build -t horooga/${PWD##*/} .
+        docker buildx build -t $2/${PWD##*/} .
         ;;
     dr)
-        docker run -d --name container -p 8000:8000 horooga/${PWD##*/}}
-	      ;;
+        docker run -d --name ${PWD##*/} -p 8000:8000 $2/${PWD##*/}
+        ;;
     drr)
-        docker stop $(docker ps -q); docker rm $(docker ps -a -q); docker buildx build -t horooga/${PWD##*/} .; docker run -d --name container -p 8000:8000 horooga/${PWD##*/}
+        docker stop $(docker ps -q); docker rm $(docker ps -a -q); docker buildx build -t $2/${PWD##*/} .; docker run -d --name ${PWD##*/} -p 8000:8000 horooga/${PWD##*/}
         ;;
     b)
         docker compose build
@@ -34,8 +35,11 @@ case "$1" in
     rr)
         docker compose down; docker compose build; docker compose up -d
         ;;
+    s)
+        docker stop $(docker ps -a -q)
+        ;;
     z)
-        docker stop $(docker ps -q); docker rm $(docker ps -a -q)
+        docker stop $(docker ps -a -q); docker rm $(docker ps -a -q)
         ;;
         
 esac
