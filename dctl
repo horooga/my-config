@@ -11,6 +11,7 @@ if [ -z "$1" ]; then
     echo "    rr - rerun (d b u)"
     echo "    s - stop all the containers"
     echo "    z - stop and delete all the containers"
+    echo "    l - docker compose logs"
 fi
 
 case "$1" in
@@ -41,5 +42,7 @@ case "$1" in
     z)
         docker stop $(docker ps -a -q); docker rm $(docker ps -a -q)
         ;;
-        
+    l)
+        docker compose logs
+        ;; 
 esac

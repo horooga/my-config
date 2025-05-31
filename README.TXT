@@ -4,4 +4,4 @@ SCRIPT INSTALLING:
     2. execute "install.sh" from the current dir
 
 AFTER-SCRIPT INSTALLING:
-    1. change ZSH_THEME of ~/.zshrc config to "powerlevel10k/powerlevel10k", delete this git-cloned repo and reboot
+    1. delete this git-cloned repo and reboot

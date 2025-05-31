@@ -1,0 +1,48 @@
+* {
+    font-family: "RH Phonic", monospace;
+}
+
+window {
+    background-color: #000000;
+}
+
+#input {
+    margin: 5px;
+    border-radius: 0;
+    border: none;
+    background-color: #000000;
+    color: #FFFFFF;
+    padding: 6px 8px;
+}
+
+#inner-box {
+    background-color: #0A0A0A;
+}
+
+#outer-box {
+    margin: 2px;
+    padding: 10px;
+    background-color: #0A0A0A;
+}
+
+#scroll {
+    margin: 5px;
+}
+
+#text {
+    padding: 4px;
+    color: #FFFFFF;
+}
+
+#entry:nth-child(even) {
+    background-color: #111111;
+}
+
+#entry:selected {
+    background-color: #222222;
+}
+
+#text:selected {
+    background: transparent;
+}
+

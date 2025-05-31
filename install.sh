@@ -1,12 +1,12 @@
 sudo pacman -Suy
-sudo pacman -S brightnessctl git waybar nvim zsh firefox fzf bat fastfetch
+sudo pacman -S bat brightnessctl fastfetch firefox fzf git nvim waybar wofi zsh
 
-for i in hypr kitty nvim waybar fastfetch; do
+for i in fastfetch hypr kitty nvim waybar wofi; do
   sudo rm -rf ~/.config/$i
   sudo mv $i ~/.config/
 done
 
-for i in app dctl lpy opn; do
+for i in dctl lpy opn; do
   sudo chmod 0777 $i
   sudo mv $i /usr/bin/
 done
@@ -18,6 +18,8 @@ wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20B
 sudo mv MesloLGS\ NF\ Bold.ttf /usr/share/fonts
 
 chsh -s /usr/bin/zsh
+
+mv .zshrc ~/.zshrc
 
 #Audio
 #sudo pacman -S pipewire pipewire-pulse pipewire-alsa wireplumber sof-firmware
