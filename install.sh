@@ -6,7 +6,7 @@ for i in fastfetch hypr kitty nvim waybar wofi; do
   sudo mv $i ~/.config/
 done
 
-for i in dctl lpy opn; do
+for i in calc dctl lpy opn; do
   sudo chmod 0777 $i
   sudo mv $i /usr/bin/
 done

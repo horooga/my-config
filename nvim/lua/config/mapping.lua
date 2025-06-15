@@ -16,9 +16,8 @@ k.set({ "n", "i", "v" }, ",t", "<Esc>:!", { noremap = true, silent = true })
 k.set({ "n", "i", "v" }, ",r", "<Esc>:%s/", { noremap = true, silent = true })
 
 --lines
--- {"n"}, "V", "select current line"
 k.set({ "n", "i" }, ",b", "<Esc>^i", { noremap = true, silent = true })
 k.set({ "n", "i" }, ",a", "<Esc>A", { noremap = true, silent = true })
-k.set({ "n", "i" }, ",l", "<Esc>yy", { noremap = true, silent = true })
+k.set({ "n", "i" }, ",l", "<Esc>V", { noremap = true, silent = true })
 k.set({ "n", "i" }, ",d", "<Esc>Vx", { noremap = true, silent = true })
 k.set({ "n", "i" }, ",c", "<Esc>Vy", { noremap = true, silent = true })
