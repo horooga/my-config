@@ -27,5 +27,8 @@ mv .zshrc ~/.zshrc
 #Yay
 #sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd ../ && rm -rf yay
 
-#rustup and rust-analyzer for nvim lsp
+#Rustup and rust-analyzer for nvim lsp
 #sudo pacman -S rustup cargo && rustup default stable && rustup component add rust-analyzer
+
+#Rust_clipboard (exes compiled for wayland and have default settings)
+#sudo chmod 0777 clipboard-gui clipboard-daemon; sudo mv clipboard-gui clipboard-daemon /usr/bin/; mv clipboard-daemon.service ~/.config/systemd/user/; systemctl --user enable --now clipboard-daemon.service
